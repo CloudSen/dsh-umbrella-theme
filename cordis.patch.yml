@@ -1,0 +1,5 @@
+# Umbrella theme: one Host row whose Client half carries the black-and-red
+# palette layer and the umbrella artwork. The Host half registers nothing.
+- insert:
+    - id: umbrella-theme
+      name: 'dsh-umbrella-theme'
