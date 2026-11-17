@@ -431,6 +431,12 @@ window.__ModuleLoader__.load({
       PALETTE_LIGHT,
       PALETTE_DARK,
       '.dsh-umbrella-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}',
+      /* `shell.overlay` turns every direct child into a hit target, and its rule
+         weighs the same as the one above. Without `!important` the layer becomes
+         clickable again the moment the host re-injects its stylesheet, and a
+         full-window HUD then eats the pointer for the whole app. The layer is
+         pure decoration, so nothing inside it may ever take a pointer. */
+      '.dsh-umbrella-layer,.dsh-umbrella-layer *{pointer-events:none!important}',
       '.dsh-umbrella-glow{position:absolute;inset:0;background:var(--dsh-umbrella-glow)}',
       '.dsh-umbrella-grid{position:absolute;inset:0;background-image:linear-gradient(var(--dsh-umbrella-grid-line,rgba(228,0,43,.055)) 1px,transparent 1px),linear-gradient(90deg,var(--dsh-umbrella-grid-line,rgba(228,0,43,.055)) 1px,transparent 1px);background-size:76px 76px;-webkit-mask-image:radial-gradient(125% 78% at 50% 42%,transparent 32%,#000 80%);mask-image:radial-gradient(125% 78% at 50% 42%,transparent 32%,#000 80%)}',
       '.dsh-umbrella-corner{position:absolute;width:30px;height:30px;border:0 solid rgba(255,45,63,.55)}',
@@ -464,6 +470,15 @@ window.__ModuleLoader__.load({
          white. `button[class*=...]` keys off the stable CSS-modules local name. */
       '[data-platform=darwin] button[class*="newSession"]{background-color:#E4002B!important;color:#FFFFFF!important;border-color:transparent!important;box-shadow:0 1px 10px rgba(228,0,43,.35)!important}',
       '[data-platform=darwin] button[class*="newSession"]:hover{background-color:#C9001F!important;color:#FFFFFF!important;box-shadow:0 2px 16px rgba(201,0,31,.55)!important}',
+      /* The right-hand dock is not part of the theme's stage. `shell.overlay` paints
+         the glow, grid and watermark above the app grid (z-index 20), so an opaque
+         fill inside the column alone cannot keep them out: the column itself has to
+         paint above that layer. With the opaque base fill the HUD now stops at the
+         conversation column, and every right-pane tab — files, terminal, browser —
+         sits on a clean surface instead of under the umbrella grid. The splitter
+         keeps a higher seat than the column so it stays grabbable. */
+      '[data-rightbar-col],[class*="_rightbarCol"]{z-index:21!important;background-color:var(--dsw-alias-bg-base)!important}',
+      '[data-side="rightbar"][class*="_handle"]{z-index:22!important}',
       /* The watermark sits at the middle of the WINDOW (`fixed` + viewport percentages,
          since 50%/50% of the overlay slot's own box is what we can rely on), and it
          turns like a coin ON its own vertical centre line.

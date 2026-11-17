@@ -11,6 +11,7 @@ English | [中文](#中文)
 - **The mark, in four places.** Registrations into `sidebar.brand.mark`, `conversation.hero.brand.mark`, `sidebar.footer.action` (a biohazard emblem beside the account row) and `shell.overlay` (a faint HUD frame: grid, corner brackets, a hairline rule and the wordmark).
 - **A watermark that spins like a coin.** A 720 px umbrella canopy sits centred behind the conversation and rotates about its own vertical centre line — the axis that splits the mark into left and right halves — so it turns edge-on and comes back rather than orbiting the screen. The background copy is canopy-only, with no hub at the apex.
 - **Red card tabs.** The Chat / Trajectory tabs are square-cornered, borderless red cards, and the macOS New Session pill is filled with Umbrella red.
+- **The right-hand dock stays out of it.** The HUD paints above the app grid, so the right column is lifted above that layer and given the opaque base fill: files, terminal and browser tabs sit on a clean surface with no umbrella grid or watermark over them.
 - **Reduced motion respected.** Both spins stop under `prefers-reduced-motion: reduce`.
 
 The umbrella mark is drawn from geometry in code — no Capcom asset is bundled. It is white and red in both schemes, and the background copy is deliberately faint so it never competes with prose.
@@ -48,6 +49,7 @@ MIT — see [LICENSE](LICENSE).
 - **标志出现在四处**：注册进 `sidebar.brand.mark`、`conversation.hero.brand.mark`、`sidebar.footer.action`（用户信息右侧的生化危机标识）与 `shell.overlay`（淡淡的 HUD：网格、四角边框、一条细线和 wordmark）。
 - **像硬币一样自转的水印**：720px 伞面居中置于对话背后，绕**自己的垂直中线**（把标志平分为左右两半的那条）自转，因此会转到侧面再转回来，而不是绕屏幕中心公转。背景那一份只有伞面，顶端没有轴心圆。
 - **直角红色卡片标签页**：Chat / Trajectory 标签是无边框直角红卡片，macOS 的 New Session 按钮填充保护伞红。
+- **右侧栏不受影响**：HUD 绘制在应用网格之上，所以右栏整体抬到该层之上并铺一层不透明底色——文件、终端、浏览器等标签页始终是干净表面，不会被伞面网格或水印盖住。
 - **尊重减弱动效**：`prefers-reduced-motion: reduce` 下两个自转都会停止。
 
 标志由代码中的几何图形绘制，仓库里不含任何 Capcom 素材；两种外观下都是白+红，背景那一份刻意很淡，不与正文抢注意力。
